@@ -8,134 +8,174 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f9f9ff;
+      background: #f5f7fa;
       color: #333;
     }
     header {
-      background: #2c3e50;
+      background: #1a237e;
       padding: 20px 40px;
       color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2em;
+      font-size: 1.8em;
     }
     nav {
-      margin-top: 10px;
+      display: flex;
+      gap: 20px;
     }
     nav a {
-      color: #ffffffaa;
-      margin-right: 20px;
+      color: #ffffffdd;
       text-decoration: none;
+      font-weight: 500;
     }
     nav a:hover {
-      color: white;
+      color: #fff;
     }
-    section.hero {
-      background: #ecf0f1;
-      padding: 60px 40px;
+    .hero {
+      background: url('https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 400px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
     }
-    section.hero h2 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+    .hero h2 {
+      font-size: 3em;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
     }
     .section {
-      padding: 40px;
-      max-width: 1000px;
+      padding: 60px 40px;
+      max-width: 1100px;
       margin: auto;
-    }
-    .courses, .scholarship-form, .payment {
-      margin-bottom: 40px;
     }
     .card {
       background: white;
-      padding: 20px;
+      padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
     }
     form input, form textarea, form button, form select {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1em;
     }
     form button {
-      background: #2c3e50;
+      background: #1a237e;
       color: white;
       border: none;
       cursor: pointer;
     }
+    form button:hover {
+      background: #0d133f;
+    }
     footer {
-      background: #2c3e50;
+      background: #1a237e;
       color: white;
       padding: 20px;
       text-align: center;
+    }
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .nav-menu.active {
+        display: flex;
+        background: #1a237e;
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Elite Coaching Classes</h1>
-    <nav>
+    <h1>Elite Coaching</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav class="nav-menu" id="menu">
       <a href="#courses">Courses</a>
       <a href="#scholarship">Scholarship</a>
       <a href="#payment">Payment</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Empowering Students for a Better Future</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat sapien eu nisl imperdiet tristique.</p>
+    <h2>Unlock Your Potential with Elite Coaching</h2>
   </section>
 
-  <div class="section courses" id="courses">
-    <h2>Our Courses</h2>
+  <div class="section" id="courses">
+    <h2>Courses We Offer</h2>
     <div class="card">
-      <h3>Foundation Batch (Class 9-10)</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Quisque auctor tincidunt lacus, a cursus nibh.</p>
+      <h3>Foundation Course</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue justo eu gravida tempus.</p>
     </div>
     <div class="card">
-      <h3>Pre-Medical (NEET)</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac justo nec leo laoreet vestibulum.</p>
+      <h3>NEET Preparation</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec facilisis libero.</p>
     </div>
     <div class="card">
-      <h3>Pre-Engineering (JEE)</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in faucibus ligula.</p>
+      <h3>JEE Preparation</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus.</p>
     </div>
   </div>
 
-  <div class="section scholarship-form" id="scholarship">
-    <h2>Apply for Scholarship</h2>
-    <form>
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <input type="text" placeholder="Phone Number" required />
-      <select required>
+  <div class="section" id="scholarship">
+    <h2>Scholarship Application</h2>
+    <form onsubmit="saveScholarship(event)">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="text" id="phone" placeholder="Phone Number" required />
+      <select id="course" required>
         <option value="">Select Course</option>
-        <option>Foundation Batch</option>
-        <option>NEET</option>
-        <option>JEE</option>
+        <option value="Foundation">Foundation</option>
+        <option value="NEET">NEET</option>
+        <option value="JEE">JEE</option>
       </select>
-      <textarea placeholder="Why do you need this scholarship?" required></textarea>
-      <button type="submit">Submit Application</button>
+      <textarea id="reason" placeholder="Why do you need this scholarship?" required></textarea>
+      <button type="submit">Apply</button>
     </form>
   </div>
 
-  <div class="section payment" id="payment">
-    <h2>Secure Online Payment</h2>
+  <div class="section" id="payment">
+    <h2>Pay Online Securely</h2>
+    <form onsubmit="savePayment(event)">
+      <input type="text" placeholder="Cardholder Name" required />
+      <input type="text" placeholder="Card Number" required />
+      <input type="text" placeholder="Expiry Date" required />
+      <input type="text" placeholder="CVV" required />
+      <button type="submit">Proceed to Pay</button>
+    </form>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Contact Us</h2>
     <div class="card">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id nunc ut metus gravida blandit in vitae enim.</p>
-      <form onsubmit="handlePayment(event)">
-        <input type="text" placeholder="Cardholder Name" required />
-        <input type="text" placeholder="Card Number" required />
-        <input type="text" placeholder="Expiry Date (MM/YY)" required />
-        <input type="text" placeholder="CVV" required />
-        <button type="submit">Pay Now</button>
-      </form>
+      <p>Email: support@elitecoaching.com</p>
+      <p>Phone: +91-9876543210</p>
+      <p>Address: 123, Education Lane, Learning City, India</p>
     </div>
   </div>
 
@@ -144,9 +184,29 @@
   </footer>
 
   <script>
-    function handlePayment(event) {
-      event.preventDefault();
-      alert("Payment gateway integration goes here. (Mocked for demo)");
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+    }
+
+    function saveScholarship(e) {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        course: document.getElementById('course').value,
+        reason: document.getElementById('reason').value,
+      };
+      console.log("Scholarship Form Submitted:", data);
+      alert("Your scholarship application has been submitted!");
+      e.target.reset();
+    }
+
+    function savePayment(e) {
+      e.preventDefault();
+      console.log("Payment Submitted (simulated)");
+      alert("Payment processing (demo only)");
+      e.target.reset();
     }
   </script>
 </body>
