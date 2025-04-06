@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UPI Form Unlock</title>
+  <title>Future Dream Group of Education</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -26,17 +26,11 @@
       font-size: 2em;
     }
 
-    section {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
     .section-title {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      color: #ff4ff3;
       text-align: center;
+      font-size: 1.8em;
+      margin: 30px 0 10px;
+      color: #ff4ff3;
     }
 
     .container {
@@ -54,6 +48,7 @@
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
+      position: relative;
     }
 
     .card:hover {
@@ -100,21 +95,38 @@
       background: #ff25e2;
     }
 
-    .text-block {
-      background: #1f1f1f;
-      border-radius: 12px;
+    .trending-badge {
+      position: absolute;
+      top: 12px;
+      right: -20px;
+      background: #ff4ff3;
+      color: #fff;
+      padding: 5px 12px;
+      font-size: 0.75em;
+      font-weight: bold;
+      transform: rotate(45deg);
+      box-shadow: 0 0 10px #ff4ff3;
+      z-index: 1;
+      border-radius: 2px;
+    }
+
+    .about, .contact {
+      max-width: 900px;
+      margin: 20px auto;
       padding: 20px;
-      line-height: 1.6;
+      background: #1e1e1e;
+      border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      line-height: 1.6;
     }
 
     footer {
-      background: #1f1f1f;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
+      background: #1f1f1f;
+      margin-top: 40px;
+      color: #aaa;
       font-size: 0.9em;
-      color: #bbb;
-      border-top: 1px solid #333;
     }
 
     @media (max-width: 600px) {
@@ -125,15 +137,20 @@
       h1 {
         font-size: 1.5em;
       }
+
+      .section-title {
+        font-size: 1.4em;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Courses</h1>
+    <h1>Future Dream Group of Education</h1>
   </header>
 
+  <div class="section-title">Courses</div>
   <div class="container">
     <div class="card">
       <img src="https://images.unsplash.com/photo-1633356122544-dc9e5d2c15e5?auto=format&fit=crop&w=800&q=60" class="thumbnail" alt="Course Thumbnail" />
@@ -163,29 +180,56 @@
     </div>
   </div>
 
-  <section>
-    <div class="section-title">About Us</div>
-    <div class="text-block">
-      We are a passionate team of educators and developers dedicated to creating the best learning experience. Our platform offers a wide range of courses that help learners upskill in tech and beyond, with real-world projects and expert mentors.
+  <div class="section-title">Events</div>
+  <div class="container">
+    <div class="card">
+      <div class="trending-badge">TRENDING</div>
+      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=60" class="thumbnail" alt="Event Thumbnail" />
+      <div class="card-content">
+        <div class="card-title">Hackathon 2025</div>
+        <div class="card-subtitle">Code, build, and win big prizes!</div>
+        <a href="#" class="button">Register</a>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <div class="section-title">Events</div>
-    <div class="text-block">
-      Stay tuned for our upcoming hackathons, coding challenges, and live webinars. These events are designed to connect learners, mentors, and professionals from around the world.
+    <div class="card">
+      <div class="trending-badge">TRENDING</div>
+      <img src="https://images.unsplash.com/photo-1590608897129-79da98d159d8?auto=format&fit=crop&w=800&q=60" class="thumbnail" alt="Event Thumbnail" />
+      <div class="card-content">
+        <div class="card-title">Live Python Bootcamp</div>
+        <div class="card-subtitle">Master Python in 7 days</div>
+        <a href="#" class="button">Join</a>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <div class="section-title">Contact Us</div>
-    <div class="text-block">
-      Have questions or feedback? Reach out to us at <strong>support@edulab.io</strong> or connect with us on our social media handles. We’re here to help!
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a5?auto=format&fit=crop&w=800&q=60" class="thumbnail" alt="Event Thumbnail" />
+      <div class="card-content">
+        <div class="card-title">UX/UI Design Workshop</div>
+        <div class="card-subtitle">Design beautiful interfaces</div>
+        <a href="#" class="button">Attend</a>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <div class="section-title">About Us</div>
+  <div class="about">
+    <p>Welcome to Future Dream Group of Education! We are passionate about providing cutting-edge educational experiences in technology and design. Our mission is to empower learners with practical skills and real-world knowledge, helping them turn their dreams into reality.</p>
+    <p>Our platform offers various courses and events crafted by experts, designed to elevate your career in tech, coding, and innovation.</p>
+  </div>
+
+  <div class="section-title">Contact Us</div>
+  <div class="contact">
+    <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+    <ul>
+      <li>Email: contact@futuredreamedu.com</li>
+      <li>Phone: +91 98765 43210</li>
+      <li>Address: 123 Learning Street, Knowledge City, India</li>
+    </ul>
+  </div>
 
   <footer>
-    &copy; 2025 EduLab. All rights reserved. | Designed with love by EduLab Team
+    &copy; 2025 Future Dream Group of Education. All rights reserved.
   </footer>
 
 </body>
