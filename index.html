@@ -10,6 +10,7 @@
       font-family: 'Segoe UI', sans-serif;
       background: #f5f7fa;
       color: #333;
+      scroll-behavior: smooth;
     }
     header {
       background: #1a237e;
@@ -18,6 +19,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     header h1 {
       margin: 0;
@@ -43,6 +47,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      animation: fadeIn 2s ease-in;
     }
     .hero h2 {
       font-size: 3em;
@@ -50,17 +55,41 @@
       padding: 20px;
       border-radius: 10px;
     }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .section {
       padding: 60px 40px;
       max-width: 1100px;
       margin: auto;
+    }
+    .course-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
     .card {
       background: white;
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .banner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #ff4081;
+      color: white;
+      padding: 5px 10px;
+      font-weight: bold;
+      border-bottom-left-radius: 10px;
     }
     form input, form textarea, form button, form select {
       width: 100%;
@@ -116,6 +145,7 @@
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav class="nav-menu" id="menu">
       <a href="#courses">Courses</a>
+      <a href="#about">About</a>
       <a href="#scholarship">Scholarship</a>
       <a href="#payment">Payment</a>
       <a href="#contact">Contact</a>
@@ -128,17 +158,29 @@
 
   <div class="section" id="courses">
     <h2>Courses We Offer</h2>
-    <div class="card">
-      <h3>Foundation Course</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue justo eu gravida tempus.</p>
+    <div class="course-cards">
+      <div class="card">
+        <div class="banner">Popular</div>
+        <h3>Foundation Course</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue justo eu gravida tempus.</p>
+      </div>
+      <div class="card">
+        <div class="banner">Top Rated</div>
+        <h3>NEET Preparation</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec facilisis libero.</p>
+      </div>
+      <div class="card">
+        <div class="banner">Trending</div>
+        <h3>JEE Preparation</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus.</p>
+      </div>
     </div>
+  </div>
+
+  <div class="section" id="about">
+    <h2>About Us</h2>
     <div class="card">
-      <h3>NEET Preparation</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec facilisis libero.</p>
-    </div>
-    <div class="card">
-      <h3>JEE Preparation</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus.</p>
+      <p>Elite Coaching Classes is dedicated to delivering excellence in academic guidance. Our expert mentors, structured curriculum, and student-centric approach ensure your success in competitive exams like NEET and JEE.</p>
     </div>
   </div>
 
@@ -205,15 +247,15 @@
         phone: document.getElementById('phone').value,
         course: document.getElementById('course').value,
         reason: document.getElementById('reason').value,
+        submittedAt: new Date().toISOString()
       };
-      console.log("Scholarship Form Submitted:", data);
+      localStorage.setItem('scholarship_' + Date.now(), JSON.stringify(data));
       alert("Your scholarship application has been submitted!");
       e.target.reset();
     }
 
     function savePayment(e) {
       e.preventDefault();
-      console.log("Payment Submitted (simulated)");
       alert("Payment processing (demo only)");
       e.target.reset();
     }
@@ -223,9 +265,10 @@
       const contactData = {
         name: document.getElementById('inq-name').value,
         email: document.getElementById('inq-email').value,
-        message: document.getElementById('inq-message').value
+        message: document.getElementById('inq-message').value,
+        submittedAt: new Date().toISOString()
       };
-      console.log("Contact Form Submitted:", contactData);
+      localStorage.setItem('contact_' + Date.now(), JSON.stringify(contactData));
       alert("Thank you for reaching out! We'll get back to you soon.");
       e.target.reset();
     }
