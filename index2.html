@@ -26,6 +26,19 @@
       font-size: 2em;
     }
 
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #ff4ff3;
+      text-align: center;
+    }
+
     .container {
       padding: 20px;
       display: grid;
@@ -87,6 +100,23 @@
       background: #ff25e2;
     }
 
+    .text-block {
+      background: #1f1f1f;
+      border-radius: 12px;
+      padding: 20px;
+      line-height: 1.6;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #bbb;
+      border-top: 1px solid #333;
+    }
+
     @media (max-width: 600px) {
       .card img.thumbnail {
         height: 140px;
@@ -99,6 +129,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1>Courses</h1>
   </header>
@@ -131,5 +162,31 @@
       </div>
     </div>
   </div>
+
+  <section>
+    <div class="section-title">About Us</div>
+    <div class="text-block">
+      We are a passionate team of educators and developers dedicated to creating the best learning experience. Our platform offers a wide range of courses that help learners upskill in tech and beyond, with real-world projects and expert mentors.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Events</div>
+    <div class="text-block">
+      Stay tuned for our upcoming hackathons, coding challenges, and live webinars. These events are designed to connect learners, mentors, and professionals from around the world.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Contact Us</div>
+    <div class="text-block">
+      Have questions or feedback? Reach out to us at <strong>support@edulab.io</strong> or connect with us on our social media handles. We’re here to help!
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 EduLab. All rights reserved. | Designed with love by EduLab Team
+  </footer>
+
 </body>
 </html>
