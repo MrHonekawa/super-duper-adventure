@@ -22,6 +22,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: background 0.3s ease;
     }
     header h1 {
       margin: 0;
@@ -35,6 +36,7 @@
       color: #ffffffdd;
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s ease;
     }
     nav a:hover {
       color: #fff;
@@ -76,10 +78,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     .banner {
       position: absolute;
@@ -137,6 +140,22 @@
         padding: 10px;
       }
     }
+    .admin-data {
+      background: #eee;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+    .admin-data h3 {
+      margin-top: 0;
+    }
+    .admin-data pre {
+      background: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 300px;
+      overflow: auto;
+    }
   </style>
 </head>
 <body>
@@ -149,6 +168,7 @@
       <a href="#scholarship">Scholarship</a>
       <a href="#payment">Payment</a>
       <a href="#contact">Contact</a>
+      <a href="#admin">Admin</a>
     </nav>
   </header>
 
@@ -230,6 +250,18 @@
     </div>
   </div>
 
+  <div class="section admin-data" id="admin">
+    <h2>Admin Dashboard</h2>
+    <div class="card">
+      <h3>Scholarship Submissions</h3>
+      <pre id="adminScholarship"></pre>
+    </div>
+    <div class="card">
+      <h3>Contact Inquiries</h3>
+      <pre id="adminContact"></pre>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2025 Elite Coaching Classes. All rights reserved.</p>
   </footer>
@@ -252,6 +284,7 @@
       localStorage.setItem('scholarship_' + Date.now(), JSON.stringify(data));
       alert("Your scholarship application has been submitted!");
       e.target.reset();
+      loadAdminData();
     }
 
     function savePayment(e) {
@@ -271,7 +304,23 @@
       localStorage.setItem('contact_' + Date.now(), JSON.stringify(contactData));
       alert("Thank you for reaching out! We'll get back to you soon.");
       e.target.reset();
+      loadAdminData();
     }
+
+    function loadAdminData() {
+      const scholarships = [];
+      const contacts = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        if (key.startsWith("scholarship_")) scholarships.push(JSON.parse(value));
+        if (key.startsWith("contact_")) contacts.push(JSON.parse(value));
+      }
+      document.getElementById("adminScholarship").textContent = JSON.stringify(scholarships, null, 2);
+      document.getElementById("adminContact").textContent = JSON.stringify(contacts, null, 2);
+    }
+
+    window.onload = loadAdminData;
   </script>
 </body>
 </html>
