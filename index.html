@@ -29,7 +29,7 @@
       margin: 0;
       font-size: 1.8em;
     }
-    nav {
+    nav, .nav-menu {
       display: flex;
       gap: 20px;
     }
@@ -78,7 +78,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       position: relative;
-      overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
@@ -118,23 +117,19 @@
       padding: 20px;
       text-align: center;
     }
-    .nav-menu {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-    }
     .menu-toggle {
       display: none;
       font-size: 1.5em;
       cursor: pointer;
     }
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
     @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .menu-toggle {
-        display: block;
-      }
+      nav { display: none; }
+      .menu-toggle { display: block; }
       .nav-menu.active {
         display: flex;
         background: #1a237e;
@@ -177,35 +172,23 @@
     <h2>Unlock Your Potential with Future Dream Group of Education</h2>
   </section>
 
-  <div class="section" id="courses">
+  <section class="section" id="courses">
     <h2>Courses We Offer</h2>
     <div class="course-cards">
-      <div class="card">
-        <div class="banner">Popular</div>
-        <h3>Foundation Course</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue justo eu gravida tempus.</p>
-      </div>
-      <div class="card">
-        <div class="banner">Top Rated</div>
-        <h3>NEET Preparation</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec facilisis libero.</p>
-      </div>
-      <div class="card">
-        <div class="banner">Trending</div>
-        <h3>JEE Preparation</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus.</p>
-      </div>
+      <div class="card"><div class="banner">Popular</div><h3>Foundation Course</h3><p>Comprehensive basics to strengthen your fundamentals.</p></div>
+      <div class="card"><div class="banner">Top Rated</div><h3>NEET Preparation</h3><p>Focused coaching with expert faculty for medical entrance.</p></div>
+      <div class="card"><div class="banner">Trending</div><h3>JEE Preparation</h3><p>Smart strategies and tests to crack engineering exams.</p></div>
     </div>
-  </div>
+  </section>
 
-  <div class="section" id="about">
+  <section class="section" id="about">
     <h2>About Us</h2>
     <div class="card">
-      <p><strong>Future Dream Group of Education</strong> is dedicated to delivering excellence in academic guidance. Our expert mentors, structured curriculum, and student-centric approach ensure your success in competitive exams like NEET and JEE.</p>
+      <p><strong>Future Dream Group of Education</strong> provides premium academic coaching with structured programs, expert mentoring, and student-focused learning environments for exams like NEET and JEE.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="section" id="scholarship">
+  <section class="section" id="scholarship">
     <h2>Scholarship Application</h2>
     <form onsubmit="saveScholarship(event)">
       <input type="text" id="name" placeholder="Full Name" required />
@@ -220,21 +203,21 @@
       <textarea id="reason" placeholder="Why do you need this scholarship?" required></textarea>
       <button type="submit">Apply</button>
     </form>
-  </div>
+  </section>
 
-  <div class="section" id="payment">
+  <section class="section" id="payment">
     <h2>Events</h2>
     <div class="course-cards">
       <div class="card">
         <div class="banner">399* INR</div>
         <h3>Scholarship Programme</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue justo eu gravida tempus.</p>
+        <p>Enroll and apply for scholarship evaluations. Limited time!</p>
         <button>Apply Now</button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section" id="contact">
+  <section class="section" id="contact">
     <h2>Contact Us</h2>
     <div class="card">
       <p>Email: support@elitecoaching.com</p>
@@ -250,9 +233,9 @@
         <button type="submit">Send Message</button>
       </form>
     </div>
-  </div>
+  </section>
 
-  <div class="section admin-data" id="admin">
+  <section class="section admin-data" id="admin">
     <h2>Admin Dashboard</h2>
     <div class="card">
       <h3>Scholarship Submissions</h3>
@@ -262,7 +245,7 @@
       <h3>Contact Inquiries</h3>
       <pre id="adminContact"></pre>
     </div>
-  </div>
+  </section>
 
   <footer>
     <p>&copy; 2025 Elite Coaching Classes. All rights reserved.</p>
@@ -284,39 +267,31 @@
         submittedAt: new Date().toISOString()
       };
       localStorage.setItem('scholarship_' + Date.now(), JSON.stringify(data));
-      alert("Your scholarship application has been submitted!");
+      alert("Scholarship application submitted!");
       e.target.reset();
       loadAdminData();
     }
 
-    function savePayment(e) {
-      e.preventDefault();
-      alert("Payment processing (demo only)");
-      e.target.reset();
-    }
-
     function submitContact(e) {
       e.preventDefault();
-      const contactData = {
+      const data = {
         name: document.getElementById('inq-name').value,
         email: document.getElementById('inq-email').value,
         message: document.getElementById('inq-message').value,
         submittedAt: new Date().toISOString()
       };
-      localStorage.setItem('contact_' + Date.now(), JSON.stringify(contactData));
-      alert("Thank you for reaching out! We'll get back to you soon.");
+      localStorage.setItem('contact_' + Date.now(), JSON.stringify(data));
+      alert("Thanks for your message!");
       e.target.reset();
       loadAdminData();
     }
 
     function loadAdminData() {
-      const scholarships = [];
-      const contacts = [];
+      const scholarships = [], contacts = [];
       for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-        if (key.startsWith("scholarship_")) scholarships.push(JSON.parse(value));
-        if (key.startsWith("contact_")) contacts.push(JSON.parse(value));
+        const key = localStorage.key(i), value = JSON.parse(localStorage.getItem(key));
+        if (key.startsWith("scholarship_")) scholarships.push(value);
+        if (key.startsWith("contact_")) contacts.push(value);
       }
       document.getElementById("adminScholarship").textContent = JSON.stringify(scholarships, null, 2);
       document.getElementById("adminContact").textContent = JSON.stringify(contacts, null, 2);
