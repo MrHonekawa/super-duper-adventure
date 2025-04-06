@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coaching Classes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #eef2ff, #ffffff);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 30px 10px;
+    }
+    header h1 {
+      font-size: 2.5em;
+      color: #3f51b5;
+    }
+    .class-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .class-card {
+      background: #fff;
+      border: 1px solid #d0d0ff;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .class-card h2 {
+      margin: 0 0 10px;
+      color: #3f51b5;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #d0d0ff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #3f51b5;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+    form button:hover {
+      background: #303f9f;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Coaching Institute Portal</h1>
+    <p>Explore and manage your classes</p>
+  </header>
+
+  <section class="class-list" id="classList">
+    <!-- Classes will be added here -->
+  </section>
+
+  <form id="classForm">
+    <h3>Add a New Class</h3>
+    <input type="text" id="subject" placeholder="Subject" required />
+    <input type="text" id="time" placeholder="Time (e.g., 9:00 AM)" required />
+    <input type="text" id="mentor" placeholder="Mentor Name" required />
+    <button type="submit">Add Class</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('classForm');
+    const classList = document.getElementById('classList');
+
+    const addClassCard = (subject, time, mentor) => {
+      const card = document.createElement('div');
+      card.className = 'class-card';
+      card.innerHTML = \`<h2>\${subject}</h2><p><strong>Time:</strong> \${time}</p><p><strong>Mentor:</strong> \${mentor}</p>\`;
+      classList.appendChild(card);
+    };
+
+    // Default classes
+    addClassCard('Mathematics', '9:00 AM', 'Mr. Singh');
+    addClassCard('Physics', '11:00 AM', 'Dr. Rao');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const subject = document.getElementById('subject').value;
+      const time = document.getElementById('time').value;
+      const mentor = document.getElementById('mentor').value;
+
+      addClassCard(subject, time, mentor);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
