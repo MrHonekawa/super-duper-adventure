@@ -177,6 +177,15 @@
       <p>Phone: +91-9876543210</p>
       <p>Address: 123, Education Lane, Learning City, India</p>
     </div>
+    <div class="card">
+      <h3>Quick Inquiry</h3>
+      <form onsubmit="submitContact(event)">
+        <input type="text" id="inq-name" placeholder="Your Name" required />
+        <input type="email" id="inq-email" placeholder="Your Email" required />
+        <textarea id="inq-message" placeholder="Type your message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 
   <footer>
@@ -206,6 +215,18 @@
       e.preventDefault();
       console.log("Payment Submitted (simulated)");
       alert("Payment processing (demo only)");
+      e.target.reset();
+    }
+
+    function submitContact(e) {
+      e.preventDefault();
+      const contactData = {
+        name: document.getElementById('inq-name').value,
+        email: document.getElementById('inq-email').value,
+        message: document.getElementById('inq-message').value
+      };
+      console.log("Contact Form Submitted:", contactData);
+      alert("Thank you for reaching out! We'll get back to you soon.");
       e.target.reset();
     }
   </script>
