@@ -2,45 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Marquee Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candy Delight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      background: #111;
-      color: #fff;
       font-family: 'Quicksand', sans-serif;
-      overflow-x: hidden;
+      background: linear-gradient(to bottom right, #ffd6e8, #e0f7ff);
     }
-
-    .marquee-container {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      border-top: 2px solid #ff4ff3;
-      border-bottom: 2px solid #ff4ff3;
-      padding: 10px 0;
-    }
-
-    .marquee {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-left 15s linear infinite;
-    }
-
-    @keyframes scroll-left {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+    h1, h2, h3 {
+      font-family: 'Pacifico', cursive;
     }
   </style>
 </head>
-<body>
+<body class="text-pink-700">
 
-  <div class="marquee-container">
-    <div class="marquee">
-      Welcome to the website! Stay tuned for updates. &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Follow us on socials. &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Enjoy your visit!
+  <!-- Header -->
+  <header class="p-6 bg-white shadow-md sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl">Candy Delight</h1>
+      <nav>
+        <a href="#about" class="mx-3 hover:text-pink-500 transition">About</a>
+        <a href="#features" class="mx-3 hover:text-pink-500 transition">Features</a>
+        <a href="#contact" class="mx-3 hover:text-pink-500 transition">Contact</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 text-center">
+    <h2 class="text-5xl mb-4 animate-bounce">Welcome to Candy Delight</h2>
+    <p class="text-lg max-w-xl mx-auto mb-6">A sweet, colorful experience for your eyes and taste!</p>
+    <button class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">Explore More</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-white py-16 px-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center gap-10">
+      <img src="https://i.imgur.com/s1wJwZk.png" alt="Candy" class="w-full md:w-1/2 rounded-2xl shadow-lg">
+      <div class="md:w-1/2">
+        <h3 class="text-3xl mb-4">About Candy Delight</h3>
+        <p class="text-md text-pink-800">Candy Delight is your escape into a world full of vibrant colors and sweet vibes. Whether you're here for design inspiration or just to enjoy the aesthetic, we promise a joyful journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-gradient-to-br from-pink-100 to-blue-100">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl mb-10">Features</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition duration-300">
+          <h4 class="text-xl font-semibold mb-2">Sweet Theme</h4>
+          <p>Pastel vibes and candy colors to soothe your eyes.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition duration-300">
+          <h4 class="text-xl font-semibold mb-2">Animated Interface</h4>
+          <p>Interactive elements with smooth animations throughout.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition duration-300">
+          <h4 class="text-xl font-semibold mb-2">Mobile Friendly</h4>
+          <p>Fully responsive layout for any screen size.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 px-4 bg-white">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl mb-6">Get in Touch</h3>
+      <form class="max-w-xl mx-auto space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-full border border-pink-200 focus:outline-none">
+        <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-full border border-pink-200 focus:outline-none">
+        <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 rounded-xl border border-pink-200 focus:outline-none"></textarea>
+        <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-200 text-center p-4">
+    <p>&copy; 2025 Candy Delight. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
