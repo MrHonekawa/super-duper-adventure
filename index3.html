@@ -29,10 +29,12 @@
       0% { transform: translateY(50px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
     }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
   </style>
 </head>
 <body class="text-pink-700">
-  <!-- Scroll Indicator -->
   <div id="scrollIndicator" class="fixed top-0 left-0 h-1 bg-pink-500 z-50" style="width: 0%;"></div>
   <script>
     window.addEventListener('scroll', () => {
@@ -46,13 +48,17 @@
   <header class="p-6 bg-white shadow-md sticky top-0 z-20 backdrop-blur-lg">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-4xl text-pink-600 drop-shadow-sm">CandyChain</h1>
-      <nav class="text-md space-x-4">
-        <a href="#about" class="hover:text-pink-500 transition duration-300">About</a>
-        <a href="#tokenomics" class="hover:text-pink-500 transition duration-300">Tokenomics</a>
-        <a href="#features" class="hover:text-pink-500 transition duration-300">Features</a>
-        <a href="#roadmap" class="hover:text-pink-500 transition duration-300">Roadmap</a>
-        <a href="#contact" class="hover:text-pink-500 transition duration-300">Contact</a>
-      </nav>
+      <div class="relative dropdown">
+        <button class="text-md px-4 py-2 bg-pink-100 hover:bg-pink-200 rounded-lg transition duration-300">Menu</button>
+        <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-pink-200 rounded-lg shadow-lg hidden z-50">
+          <a href="#about" class="block px-4 py-2 hover:bg-pink-100 transition">About</a>
+          <a href="#tokenomics" class="block px-4 py-2 hover:bg-pink-100 transition">Tokenomics</a>
+          <a href="#features" class="block px-4 py-2 hover:bg-pink-100 transition">Features</a>
+          <a href="#roadmap" class="block px-4 py-2 hover:bg-pink-100 transition">Roadmap</a>
+          <a href="#contact" class="block px-4 py-2 hover:bg-pink-100 transition">Contact</a>
+          <a href="#explorer" class="block px-4 py-2 hover:bg-pink-100 transition">Explorer</a>
+        </div>
+      </div>
     </div>
   </header>
 
